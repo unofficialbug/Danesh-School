@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<style>
+  table{
+    border-collapse: collapse;
+    width:50%;
+    text-align: right;
+  }
+  td,th{
+    border: 1bx solid;
+    padding: 8px;
+    text-align: center;
+  }
+  tr:nth-child(even) {
+  background-color: #D6EEEE;
+  }
+  th{
+    font-weight: bold;
+  }
+  body{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+}
+.emp-profile{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+.profile-img{
+    text-align: left;
+}
+.profile-img img{
+    width: 100%;
+    height: 100%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-head h5{
+    color: #333;
+    text-align: center;
+}
+.profile-head h6{
+    color: #0062cc;
+    text-align: center;
+
+}
+
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+    text-align: right;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
+    text-align: right;
+}
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
+    text-align: right;
+}
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+    text-align: right;
+}
+.profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: right;
+}
+.profile-work ul{
+    list-style: none;
+    text-align: right;
+}
+.profile-tab label{
+    font-weight: 600;
+    text-align: right;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #0062cc;
+    text-align: right;
+}
+.row {
+  display: flex;
+}
+.column {
+  flex: 50%;
+  padding: 10px;
+  text-align: right;
+}
+</style>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile Page</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container emp-profile">
+            <form method="post">
+                <div class="row">
+                    <div class="column" style="background-color:#aaa;">
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                        {{g.student.firstname}} {{g.student.lastname}}
+                                    </h5>
+                                    <h6>
+                                        دانش‌آموز مدرسه دانش
+                                    </h6>
+                        </div>
+                    </div>
+                        {% if  g.student.scores|length == 0 %}
+ 
+                        <p> .نمره ای برای نشان دادن وجود ندارد</p>
+                         
+                        {% else %}
+                         
+                    <table>
+                          <tr>
+                            <th style="width:30%">نمره</th>
+                            <th>درس</th>
+                          </tr>
+                          {% for item in g.student.scores %}    
+                            <tr>
+                                <td>{{item[1]}}</td>
+                                <td>{{item[0]}}</td>
+
+                            </tr>
+                            {% endfor %} 
+                        </table>
+                        {% endif %}
+                    </div>
+                    <div class="column" style="background-color:#bbb;">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="profile-img" style="direction: rtl;">
+                                    <img src="https://s4.uupload.ir/files/man-avatar-profile-vector-21372076_(2)_3ssg.jpg" alt="" align="right">
+                                </div>
+                            </div>
+                        </div>
+                    <div class="col-md-8">
+                            <div class="tab-content profile-tab" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p style="background-color:rgb(204, 229, 225);" style="direction: rtl;">شماره دانش آموزی</p>
+                                                    <p style="direction: rtl;">{{g.student.studentID}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p style="background-color:rgb(205, 229, 225);" style="direction: rtl;">شماره ملی</p>
+                                                    <p style="direction: rtl;">{{g.student.nationalID}}</p>
+                                                </div>
+                                            </div>
+                                 </div>
+                            </div>   
+                    </div>       
+                    </div>
+                </div>
+            </form>
+        </div>
+  </body>
+</html>
