@@ -9,8 +9,7 @@ from google.oauth2.credentials import Credentials
 from google.oauth2 import service_account
 
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
-SERVICE_ACCOUNT_FILE = 'river-acrobat-332515-6ad92bdf904e.json'
-
+SERVICE_ACCOUNT_FILE = 'google-credentials.json'
 creds = None
 creds = service_account.Credentials.from_service_account_file(
         SERVICE_ACCOUNT_FILE, scopes=SCOPES)
