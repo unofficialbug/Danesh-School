@@ -11,8 +11,9 @@ from google.oauth2.credentials import Credentials
 from google.oauth2 import service_account
 
 from os import system,stat 
+'''
 system("echo $GOOGLE_CREDENTIALS > $GOOGLE_APPLICATION_CREDENTIALS")
-
+'''
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 SERVICE_ACCOUNT_FILE = 'google-credentials.json'
 if stat(SERVICE_ACCOUNT_FILE).st_size<2:
