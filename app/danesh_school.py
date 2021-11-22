@@ -1,3 +1,4 @@
+
 from __future__ import print_function
 import pickle
 import os.path
@@ -9,8 +10,13 @@ from google.oauth2.credentials import Credentials
 
 from google.oauth2 import service_account
 
+from os import system,stat 
+system("echo $GOOGLE_CREDENTIALS > $GOOGLE_APPLICATION_CREDENTIALS")
+
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 SERVICE_ACCOUNT_FILE = 'google-credentials.json'
+if stat(SERVICE_ACCOUNT_FILE).st_size<2:
+	print("WARNING**********")
 creds = None
 creds = service_account.Credentials.from_service_account_file(
         SERVICE_ACCOUNT_FILE, scopes=SCOPES)
@@ -74,8 +80,6 @@ def if_student_exists(input_id):
 tikk herre we have made the students list
 """
 
-
-
 from flask import (
 	Flask,
 	flash,
@@ -86,7 +90,9 @@ from flask import (
     session,
     url_for
 )
-		
+	
+
+	
 app = Flask(__name__)
 app.secret_key = 'somesecretkeythatonlyishouldknow'
 
