@@ -1,1 +1,1 @@
-web: gunicorn danesh_school
+web: gunicorn wsgi:app
